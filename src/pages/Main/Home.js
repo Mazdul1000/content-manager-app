@@ -1,68 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import blog1 from '../../assets/images/blog1.jpg'
+import PostGridItem from '../../components/main/PostGridItem';
+import { decrease, increase } from '../../redux/actionCreators/counterActions';
+import loadPostsData from '../../redux/thunk/fetchPosts';
 
 const Home = () => {
+    const dispatch = useDispatch()
+    const {posts} = useSelector( (state) => state.post)
+    console.log(posts)
+
+    useEffect(() => {
+        dispatch(loadPostsData())
+    },[])
     return (
      <div className='flex w-full  space-x-3'>
-        <div className='w-3/4'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 pl-10 pt-[100px]'>
-      <div className='shadow-xl rounded-lg hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img className='' src={blog1} alt="" />
-                    <span className='w-full block h-3 bg-indigo-700'></span>
-                    <div className='p-7'>
-                    <h1 className='font-semibold text-2xl'>IoT based farming</h1>
-                    <p>We are providing all the equipment and training for IOT based farm. In this era of technology we should...<span className='font-bold text-xl'>See more</span></p>
-                    </div>
-      </div>
-      <div className='shadow-xl rounded-lg hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img className='' src={blog1} alt="" />
-                    <span className='w-full block h-3 bg-indigo-700'></span>
-                    <div className='p-7'>
-                    <h1 className='font-semibold text-2xl'>IoT based farming</h1>
-                    <p>We are providing all the equipment and training for IOT based farm. In this era of technology we should...<span className='font-bold text-xl'>See more</span></p>
-                    </div>
-      </div>
-      <div className='shadow-xl rounded-lg hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img className='' src={blog1} alt="" />
-                    <span className='w-full block h-3 bg-indigo-700'></span>
-                    <div className='p-7'>
-                    <h1 className='font-semibold text-2xl'>IoT based farming</h1>
-                    <p>We are providing all the equipment and training for IOT based farm. In this era of technology we should...<span className='font-bold text-xl'>See more</span></p>
-                    </div>
-      </div>
-      <div className='shadow-xl rounded-lg hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img className='' src={blog1} alt="" />
-                    <span className='w-full block h-3 bg-indigo-700'></span>
-                    <div className='p-7'>
-                    <h1 className='font-semibold text-2xl'>IoT based farming</h1>
-                    <p>We are providing all the equipment and training for IOT based farm. In this era of technology we should...<span className='font-bold text-xl'>See more</span></p>
-                    </div>
-      </div>
-      <div className='shadow-xl rounded-lg hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img className='' src={blog1} alt="" />
-                    <span className='w-full block h-3 bg-indigo-700'></span>
-                    <div className='p-7'>
-                    <h1 className='font-semibold text-2xl'>IoT based farming</h1>
-                    <p>We are providing all the equipment and training for IOT based farm. In this era of technology we should...<span className='font-bold text-xl'>See more</span></p>
-                    </div>
-      </div>
-      <div className='shadow-xl rounded-lg hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img className='' src={blog1} alt="" />
-                    <span className='w-full block h-3 bg-indigo-700'></span>
-                    <div className='p-7'>
-                    <h1 className='font-semibold text-2xl'>IoT based farming</h1>
-                    <p>We are providing all the equipment and training for IOT based farm. In this era of technology we should...<span className='font-bold text-xl'>See more</span></p>
-                    </div>
-      </div>
-      <div className='shadow-xl rounded-lg hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img className='' src={blog1} alt="" />
-                    <span className='w-full block h-3 bg-indigo-700'></span>
-                    <div className='p-7'>
-                    <h1 className='font-semibold text-2xl'>IoT based farming</h1>
-                    <p>We are providing all the equipment and training for IOT based farm. In this era of technology we should...<span className='font-bold text-xl'>See more</span></p>
-                    </div>
-      </div>
-        </div>
+        <div className='grid grid-cols-12 gap-4 mx-auto px-5 lg:px-0 min-h-[300px] w-3/4 mt-24'>
+     {
+        posts.map((post) => <PostGridItem post={post} key={post._id} />)
+     }
         </div>
         <div className='w-1/4 bg-gray-600'>
             <div className='flex w-full flex-wrap pr-10 space-x-3'>
