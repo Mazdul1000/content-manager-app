@@ -5,7 +5,6 @@ const loadPostsData = () => {
         const res = await fetch("http://localhost:5002/posts");
 
         const data = await res.json();
-     console.log(data)
         if(data.data.length){
             dispatch(loadPosts(data.data))
         }
