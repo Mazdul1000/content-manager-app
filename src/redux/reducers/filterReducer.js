@@ -1,9 +1,10 @@
-import { TOGGLE_KEYWORD } from "../actionTypes/actionTypes";
+import { TOGGLE_KEYWORD, TOGGLE_SORT } from "../actionTypes/actionTypes";
 
 const initialState = {
     filters: {
         tags:[]
-    }
+    },
+    sort: "",
 }
 
 export const filterReducer = (state=initialState, action) => {
@@ -26,9 +27,13 @@ export const filterReducer = (state=initialState, action) => {
                     }
                 }
             }
-            
-            
-    
+
+        case TOGGLE_SORT:
+            return {
+                ...state,
+                sort: action.payload
+            }
+                          
         default:
             return state
     }

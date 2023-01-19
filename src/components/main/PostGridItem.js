@@ -1,16 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToHistory } from '../../redux/actionCreators/postActions';
 
 const PostGridItem = ({post}) => {
-    const {_id, title, author,  avatar, date, thumbnail} = post;
+  const dispatch = useDispatch();
+    const {_id, title, author,  avatar, created_timestamp, thumbnail} = post;
+    const date = new Date(created_timestamp);
+
     return (
         <div className="col-span-12 sm:col-span-6 md:col-span-3 duration-300 hover:scale-[1.03]">
         <div className="w-full flex flex-col">
           <div className="relative">
-            <Link to={`/videos/${_id}`} >
+            <Link to={`/post/${_id}`}>
               <img
                 src={thumbnail}
-                className="w-full h-auto"
+                className="w-full h-[120px]"
                 alt="Some video title"
               />
             </Link>
@@ -21,7 +26,7 @@ const PostGridItem = ({post}) => {
           </div>
   
           <div className="flex flex-row mt-2 gap-2">
-            <Link to="/videos/1" className="shrink-0">
+            <Link to="/post/1" className="shrink-0">
               <img
                 src={avatar}
                 className="rounded-full h-6 w-6"
@@ -30,19 +35,19 @@ const PostGridItem = ({post}) => {
             </Link>
   
             <div clas="flex flex-col">
-              <Link to={`/videos/${_id}`}>
+              <Link to={`/post/${_id}`}>
                 <p className="text-slate-900 text-sm font-semibold">
                   {title}
                 </p>
               </Link>
               <Link
                 className="text-gray-400 text-xs mt-2 hover:text-gray-600"
-                to={`/videos/${_id}`}
+                to={`/post/${_id}`}
               >
                 {author}
               </Link>
               <p className="text-gray-400 text-xs mt-1">
-                10 views . {date}
+                {date.toDateString()}
               </p>
             </div>
           </div>

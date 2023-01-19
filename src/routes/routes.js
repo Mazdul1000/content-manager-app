@@ -1,6 +1,7 @@
 import Dashboard from "../layout/Dashboard/Dashboard";
 import AddPost from "../pages/Dashboard/AddPost";
 import Home from "../pages/Main/Home";
+import Post from "../pages/Main/Post";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../layout/Main/Main");
@@ -18,6 +19,10 @@ const { default: History } = require("../pages/Main/History");
             {
                 path: '/history',
                 element: <History />
+            },
+            {
+                path: '/post/:postId',
+                element: <Post />
             }
         ]
 
