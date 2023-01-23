@@ -1,5 +1,6 @@
 import Dashboard from "../layout/Dashboard/Dashboard";
 import AddPost from "../pages/Dashboard/AddPost";
+import PostList from "../pages/Dashboard/PostList";
 import Home from "../pages/Main/Home";
 import Post from "../pages/Main/Post";
 
@@ -34,6 +35,10 @@ const { default: History } = require("../pages/Main/History");
             {
                 path: 'add-post',
                 element: <AddPost />
+            },
+            {
+                path:'/dashboard',
+                element: <PostList />
             }
         ]
     }
