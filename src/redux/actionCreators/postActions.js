@@ -1,4 +1,4 @@
-import { ADD_POST, ADD_TO_HISTORY, LOAD_POSTS } from "../actionTypes/actionTypes"
+import { ADD_POST, ADD_TO_HISTORY, EDIT_POST, LOAD_POSTS, REMOVE_POST } from "../actionTypes/actionTypes"
 
 export const loadPosts = (payload) => {
     return {
@@ -10,6 +10,20 @@ export const loadPosts = (payload) => {
 export const addPost = (payload) => {
     return {
         type: ADD_POST,
+        payload: payload,
+    }
+}
+
+export const removePost = (payload) => {
+    return {
+        type: REMOVE_POST,
+        payload: payload,
+    }
+}
+
+export const editPost = (payload) => {
+    return {
+        type: EDIT_POST,
         payload: payload,
     }
 }

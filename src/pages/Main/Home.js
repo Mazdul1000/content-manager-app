@@ -54,14 +54,6 @@ const Home = () => {
     const {tags} = useSelector((state) => state.filter.filters);
     const {sort} = useSelector((state) => state.filter);
 
-  
-console.log()
-  
-
-    useEffect(() => {
-        dispatch(loadPostsData())
-    },[])
-
     let content;
 
     if(posts.length){

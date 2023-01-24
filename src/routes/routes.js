@@ -1,5 +1,6 @@
 import Dashboard from "../layout/Dashboard/Dashboard";
 import AddPost from "../pages/Dashboard/AddPost";
+import EditPost from "../pages/Dashboard/EditPost";
 import PostList from "../pages/Dashboard/PostList";
 import Home from "../pages/Main/Home";
 import Post from "../pages/Main/Post";
@@ -39,6 +40,10 @@ const { default: History } = require("../pages/Main/History");
             {
                 path:'/dashboard',
                 element: <PostList />
+            },
+            {
+                path: 'edit-post/:postId',
+                element: <EditPost />
             }
         ]
     }

@@ -1,5 +1,5 @@
 
-import { ADD_POST, ADD_TO_HISTORY, LOAD_POSTS } from "../actionTypes/actionTypes";
+import { ADD_POST, ADD_TO_HISTORY, EDIT_POST, LOAD_POSTS, REMOVE_POST } from "../actionTypes/actionTypes";
 
 
 const initialState = {
@@ -25,14 +25,32 @@ export const  postReducer = (state=initialState, action) => {
                 posts: [...state.posts, action.payload]
             }
 
+        case EDIT_POST: 
+            const newList = state.posts.filter((post) => post._id !== action.payload._id);
+            return {
+                ...state,
+                posts: [...newList, action.payload]
+            }    
+
+        case REMOVE_POST: 
+            return {
+                ...state,
+                posts: state.posts.filter((post) => post._id !== action.payload)
+            }
+
         case ADD_TO_HISTORY:
             if(!doesExistsInHistory){
                 return {
                     ...state,
-                    readingHistory: [...state.readingHistory, action.payload]
+                    readingHistory: [action.payload, ...state.readingHistory]
                 }
             }else{
-                return state
+                const sortedList = state.readingHistory.filter((post) => post._id !== action.payload._id);
+
+                return {
+                    ...state,
+                    readingHistory: [action.payload, ...sortedList]
+                }
             }
 
             
