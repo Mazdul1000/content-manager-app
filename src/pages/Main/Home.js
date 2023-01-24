@@ -143,27 +143,25 @@ const Home = () => {
     }
 
     return (
-     <div className='flex w-full  space-x-3'>
-        <div className='grid grid-cols-12 gap-4 mx-auto px-5 lg:px-0 min-h-[300px] w-3/4 mt-24'>
-     {content}
-        </div>
-        <div className='w-1/4 bg-gray-600'>
-            <div>
+     <div className='flex flex-col w-full px-20  space-x-3'>
+        <div className='flex justify-center items-center px-3 mt-10 bg-slate-200'>
+        <div className='flex w-full flex-wrap space-x-3'>
+                {
+                    keywords.map((tag) => <button className={`btn px-3 py-2 ${tags.includes(tag.title) ? 'bg-indigo-700 text-white' : 'bg-white text-indigo-800'}  rounded font-semibold`} key={tag.id} onClick={() => dispatch(toggleKeyword(tag.title))}>{tag.title}</button>)
+                    
+                }
+            </div>
+            <div className='bg-slate-300 p-3 rounded-md'>
                 <label htmlFor="sort">Sort</label>
                 <select name="sort" id="" onChange={(e) => dispatch(toggleSort((e.target.value)))}>
                     <option value="sortByLast">Sort by Last upload</option>
                     <option value="sortByFirst">Sort by first upload</option>    
                 </select>
             </div>
-
-            <div className='flex w-full flex-wrap pr-10 space-x-3'>
-                {
-                    keywords.map((tag) => <button className={`btn px-3 py-2 ${tags.includes(tag.title) ? 'bg-indigo-700 text-white' : 'bg-white text-indigo-800'}  rounded font-semibold`} key={tag.id} onClick={() => dispatch(toggleKeyword(tag.title))}>{tag.title}</button>)
-                    
-                }
-            </div>
         </div>
-
+        <div className='grid grid-cols-12 gap-4 mx-auto lg:px-0 min-h-[300px] w-full mt-10'>
+     {content}
+        </div>
      </div>
     );
 };
