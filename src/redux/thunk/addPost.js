@@ -2,7 +2,7 @@ import { addPost } from "../actionCreators/postActions";
 
 export const addNewPost = (payload) => {
     return async (dispatch, getState) =>{
-        const res = await fetch('http://localhost:5002/posts', {
+        const res = await fetch('https://content-manager-server-d6rkg8fj2-mazdul1000.vercel.app/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

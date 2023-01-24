@@ -12,7 +12,7 @@ const Post = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:5002/post/${postId}`)
+    fetch(`https://content-manager-server-d6rkg8fj2-mazdul1000.vercel.app/post/${postId}`)
       .then((res) => res.json())
       .then((data) => setPost(data));
 

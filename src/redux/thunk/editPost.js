@@ -4,7 +4,7 @@ export const editPostData = (postData) => {
     return async (dispatch) => {
         const {_id, data:dataset} = postData;
         const payload = {...dataset, _id};
-        const res = await fetch(`http://localhost:5002/post/${_id}`,{
+        const res = await fetch(`https://content-manager-server-d6rkg8fj2-mazdul1000.vercel.app/post/${_id}`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
