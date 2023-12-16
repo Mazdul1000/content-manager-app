@@ -10,7 +10,7 @@ const EditPost = () => {
   /* const [tags, setTags] = useState([]); */
     const post = useSelector((state) => state.post.posts.find((post) => post._id === postId))
 
-    const {title, author, avatar, thumbnail, likes, unlikes, description, created_timestamp, tags, _id} = post || {}
+    const {title, author, avatar, thumbnail, likes, unlikes, description, created_timestamp, tags, _id, des} = post || {}
     const preDefaultValues = {
       title,
       author,
@@ -20,7 +20,7 @@ const EditPost = () => {
       unlikes,
       tags,
       created_timestamp,
-      description
+      des
 
     }
 
@@ -78,8 +78,8 @@ const EditPost = () => {
           <textarea
             rows={6}
             className="border w-full p-3"
-            name="description"
-            {...register("description", { min: 500 })}
+            name="des"
+            {...register("des", { min: 500 })}
           />
         </div>
       

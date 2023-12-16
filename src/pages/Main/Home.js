@@ -159,7 +159,7 @@ const Home = () => {
                 </select>
             </div>
         </div>
-        <div className='grid grid-cols-12 gap-4 mx-auto lg:px-0 min-h-[300px] w-full mt-10'>
+        <div className='grid grid-cols-12 mx-auto lg:px-0 min-h-[300px] w-full mt-10 gap-10'>
      {content}
         </div>
      </div>

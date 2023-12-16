@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToHistory } from "../../redux/actionCreators/postActions";
-
+import PostDescription from "../../components/post/PostDescription";
 
 
 const Post = () => {
   const dispatch = useDispatch();
   const { postId } = useParams();
   const [post, setPost] = useState(null);
+
+
+
 
   useEffect(() => {
 
@@ -18,8 +21,10 @@ const Post = () => {
 
   }, []);
 
+
   if(post){
     dispatch(addToHistory(post))
+    console.log(post.des)
   }
 
   const {
@@ -30,6 +35,7 @@ const Post = () => {
     author,
     avatar,
     tags,
+    des
   } = post || {};
   const date = new Date(created_timestamp);
   return (
@@ -50,8 +56,8 @@ const Post = () => {
       </div>
     </div>
 
-      <div>
-        <p className="text-2xl text-gray-800">{description}</p>
+      <div>  
+      <PostDescription content={des}/>  
       </div>
     </div>
   );
